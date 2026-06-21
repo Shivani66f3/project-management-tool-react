@@ -22,7 +22,6 @@ function App() {
 
   const addTask = () => {
     if (newTask.trim() === "") return;
-
     setTodo([...todo, newTask]);
     setNewTask("");
   };
@@ -42,10 +41,7 @@ function App() {
   }, [todo]);
 
   useEffect(() => {
-    localStorage.setItem(
-      "inProgress",
-      JSON.stringify(inProgress)
-    );
+    localStorage.setItem("inProgress", JSON.stringify(inProgress));
   }, [inProgress]);
 
   useEffect(() => {
@@ -71,24 +67,16 @@ function App() {
           onChange={(e) => setNewTask(e.target.value)}
         />
 
-        <button onClick={addTask}>
-          Add Task
-        </button>
+        <button onClick={addTask}>Add Task</button>
       </div>
 
       <div className="board">
         <div className="column">
           <h2>To Do</h2>
-
           {todo.map((task, index) => (
             <div key={index} className="task">
               <span>{task}</span>
-
-              <button
-                onClick={() =>
-                  moveToProgress(task)
-                }
-              >
+              <button onClick={() => moveToProgress(task)}>
                 Move →
               </button>
             </div>
@@ -97,16 +85,10 @@ function App() {
 
         <div className="column">
           <h2>In Progress</h2>
-
           {inProgress.map((task, index) => (
             <div key={index} className="task">
               <span>{task}</span>
-
-              <button
-                onClick={() =>
-                  moveToDone(task)
-                }
-              >
+              <button onClick={() => moveToDone(task)}>
                 Done →
               </button>
             </div>
@@ -115,7 +97,6 @@ function App() {
 
         <div className="column">
           <h2>Done</h2>
-
           {done.map((task, index) => (
             <div key={index} className="task">
               {task}
@@ -123,14 +104,6 @@ function App() {
           ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <div>
-      Hello World
     </div>
   );
 }
